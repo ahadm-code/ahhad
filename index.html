@@ -6,318 +6,233 @@
 <title>Portfolio</title>
 
 <style>
-/* =======================
-   BASE THEME (same vibe)
-======================= */
-html { scroll-behavior: smooth; }
-
+/* =========================
+   GLOBAL DARK PURPLE THEME
+========================= */
 body {
   margin: 0;
-  background: #050811;
-  color: #e2e8f0;
-  font-family: 'Syne', sans-serif;
+  font-family: Arial, sans-serif;
+  color: white;
   overflow-x: hidden;
+
+  /* 💜 Purple glowing background */
+  background: radial-gradient(circle at top, #2a0a3d, #05010a);
 }
 
-/* NAV */
+/* =========================
+   ANIMATED STARS BACKGROUND
+========================= */
+.stars, .stars2, .stars3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+  z-index: -1;
+}
+
+.stars::after,
+.stars2::after,
+.stars3::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow:
+    10px 20px white,
+    30px 50px white,
+    80px 120px white,
+    120px 200px white,
+    200px 300px white,
+    300px 400px white,
+    400px 500px white,
+    500px 600px white,
+    600px 700px white,
+    700px 800px white;
+  animation: moveStars 50s linear infinite;
+  opacity: 0.5;
+}
+
+.stars2::after {
+  animation: moveStars 80s linear infinite;
+  opacity: 0.3;
+}
+
+.stars3::after {
+  animation: moveStars 120s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+/* =========================
+   NAVBAR
+========================= */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
-  padding: 14px 20px;
   display: flex;
   justify-content: center;
-  gap: 12px;
-  background: rgba(5, 8, 17, 0.6);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(139,92,246,0.1);
+  gap: 25px;
+  padding: 15px;
+  background: rgba(10, 0, 20, 0.6);
+  backdrop-filter: blur(10px);
 }
 
-nav button {
-  background: none;
-  border: none;
-  color: #64748b;
-  font-size: 12px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: 0.3s;
-  text-transform: uppercase;
+nav a {
+  color: #c084ff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-nav button.active {
-  color: #a78bfa;
-}
-
-/* SECTIONS */
-section {
-  min-height: 100vh;
-  padding: 120px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-/* TEXT */
-h1 {
-  font-size: 64px;
-  margin: 0;
-  background: linear-gradient(135deg,#e2e8f0,#a78bfa,#7c3aed);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h2 {
-  font-size: 34px;
-  margin-bottom: 20px;
-  color: #e2e8f0;
-}
-
-p {
-  color: #7c85a2;
-  line-height: 1.8;
-}
-
-/* CARDS */
-.card {
-  background: rgba(13,27,62,0.4);
-  border: 1px solid rgba(139,92,246,0.1);
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-/* BUTTONS */
-.btn {
-  background: linear-gradient(135deg,#6d28d9,#7c3aed);
-  border: none;
-  padding: 12px 18px;
-  border-radius: 8px;
+nav a:hover {
   color: white;
-  cursor: pointer;
 }
 
-/* HERO */
-.hero {
-  min-height: 100vh;
+/* =========================
+   HOME SECTION
+========================= */
+.home {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-/* typing */
-.typing {
-  color: #a78bfa;
-  font-family: monospace;
-  font-size: 18px;
-  min-height: 25px;
+h1 {
+  font-size: 3rem;
+  color: #c084ff;
+  text-shadow: 0 0 20px #a855f7;
 }
 
-/* FADE IN */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.6s;
-}
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
+.bio {
+  max-width: 600px;
+  opacity: 0.8;
 }
 
-/* STAR CANVAS */
-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
+/* =========================
+   PROFILE IMAGE (GLOW EFFECT)
+========================= */
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin-top: 20px;
+  border: 3px solid #c084ff;
+  box-shadow: 0 0 25px #a855f7;
+  transition: 0.4s;
 }
 
-/* small */
-.small {
-  color: #94a3b8;
-  font-size: 14px;
+.profile-img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 50px #c084ff;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  background: #a855f7;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  color: #c084ff;
+  text-shadow: 0 0 10px #a855f7;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="stars"></canvas>
+<!-- ⭐ STARS LAYERS -->
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
 
+<!-- NAV -->
 <nav>
-  <button onclick="go('home')" class="active">Home</button>
-  <button onclick="go('about')">About</button>
-  <button onclick="go('projects')">Projects</button>
-  <button onclick="go('contact')">Contact</button>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero fade">
-  <h1 id="name">Your Name</h1>
-  <div class="typing" id="typing"></div>
-  <p>A passionate software engineer who loves building modern apps.</p>
+<!-- HOME -->
+<section id="home" class="home">
+  <h1>Your Name</h1>
+
+  <p class="bio">
+    Software Engineer passionate about building modern, clean and powerful web experiences.
+  </p>
+
+  <!-- PROFILE IMAGE -->
+  <img src="profile.jpg" class="profile-img" alt="Profile">
+
+  <!-- CV BUTTONS -->
+  <div>
+    <a class="btn" href="Cv%20ahad1.pdf" target="_blank">View CV</a>
+    <a class="btn" href="Cv%20ahad1.pdf" download>Download CV</a>
+  </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="fade">
+<section id="about">
   <h2>About Me</h2>
-  <div class="card">
-    <p>
-      I'm a developer who loves clean code, architecture and design.
-      I enjoy building scalable systems and creative interfaces.
-    </p>
-  </div>
+  <p>Write your about section here...</p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Skills</h2>
+  <p>HTML, CSS, JavaScript, React...</p>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="fade">
+<section id="projects">
   <h2>Projects</h2>
-
-  <div class="card">
-    <h3>OpenMetrics Dashboard</h3>
-    <p>Real-time analytics dashboard with WebSockets and D3.js.</p>
-  </div>
-
-  <div class="card">
-    <h3>Codeflow CLI</h3>
-    <p>CLI tool for automating git workflows and productivity.</p>
-  </div>
+  <p>Graduation project will be added here...</p>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="fade">
-  <h2>Contact</h2>
+<section id="contact">
+  <h2>Contact Me</h2>
   <p>Email: your@email.com</p>
-  <button class="btn" onclick="window.location='mailto:your@email.com'">
-    Send Email
-  </button>
+  <p>Phone: +966XXXXXXXXX</p>
 </section>
-
-<script>
-/* =========================
-   DATA (same idea as React)
-========================= */
-const phrases = [
-  "Software Engineer",
-  "Full Stack Developer",
-  "Problem Solver",
-  "Open Source Contributor"
-];
-
-/* =========================
-   TYPING EFFECT
-========================= */
-let i = 0, j = 0, deleting = false;
-const typingEl = document.getElementById("typing");
-
-function type() {
-  const current = phrases[i];
-
-  if (!deleting) {
-    typingEl.textContent = current.slice(0, j++);
-    if (j > current.length) {
-      deleting = true;
-      setTimeout(type, 1200);
-      return;
-    }
-  } else {
-    typingEl.textContent = current.slice(0, j--);
-    if (j === 0) {
-      deleting = false;
-      i = (i + 1) % phrases.length;
-    }
-  }
-
-  setTimeout(type, deleting ? 50 : 80);
-}
-type();
-
-/* =========================
-   SCROLL FADE
-========================= */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("show");
-  });
-});
-
-document.querySelectorAll(".fade").forEach(el => observer.observe(el));
-
-/* =========================
-   NAV SCROLL
-========================= */
-function go(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-}
-
-/* active nav */
-window.addEventListener("scroll", () => {
-  const sections = ["home","about","projects","contact"];
-  let scrollPos = window.scrollY + 200;
-
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    const btn = [...document.querySelectorAll("nav button")]
-      .find(b => b.textContent.toLowerCase() === id);
-
-    if (el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
-      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
-      if (btn) btn.classList.add("active");
-    }
-  });
-});
-
-/* =========================
-   STARFIELD (same vibe)
-========================= */
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-
-let stars = [];
-const NUM = 250;
-
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-function init() {
-  stars = [];
-  for (let i = 0; i < NUM; i++) {
-    stars.push({
-      x: (Math.random()-0.5) * canvas.width,
-      y: (Math.random()-0.5) * canvas.height,
-      z: Math.random() * canvas.width
-    });
-  }
-}
-
-function draw() {
-  ctx.fillStyle = "rgba(5,8,17,0.25)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  for (let s of stars) {
-    const k = canvas.width / s.z;
-    const x = s.x * k + canvas.width/2;
-    const y = s.y * k + canvas.height/2;
-
-    const size = (1 - s.z / canvas.width) * 2;
-
-    ctx.fillStyle = "#a78bfa";
-    ctx.beginPath();
-    ctx.arc(x,y,size,0,Math.PI*2);
-    ctx.fill();
-
-    s.z -= 2;
-    if (s.z <= 0) s.z = canvas.width;
-  }
-
-  requestAnimationFrame(draw);
-}
-
-resize();
-init();
-draw();
-window.addEventListener("resize", () => { resize(); init(); });
-</script>
 
 </body>
 </html>
