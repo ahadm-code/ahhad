@@ -3,177 +3,230 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Portfolio</title>
+<title>Ahad Portfolio</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* =========================
-   CONFIG STYLE (DO NOT TOUCH DESIGN)
-========================= */
-:root {
-  --main: #a855f7;
-  --dark: #0a001a;
-  --glow: #b46cff;
+:root{
+  --main:#a855f7;
+  --dark:#0a001a;
+  --glow:#b46cff;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-family: Arial, sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+  font-family:'Poppins',sans-serif;
 }
 
-body {
-  background: radial-gradient(circle at top, #1a0033, var(--dark));
-  color: white;
-  overflow-x: hidden;
+body{
+  background: radial-gradient(circle at top,#1a0033,var(--dark));
+  color:white;
+  overflow-x:hidden;
 }
 
 /* STARS */
-.stars {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+.stars{position:fixed;width:100%;height:100%;z-index:-1}
+.star{
+  position:absolute;
+  width:2px;height:2px;
+  background:white;
+  border-radius:50%;
+  animation:fall linear infinite;
 }
-
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  animation: fall linear infinite;
-}
-
-@keyframes fall {
-  from { transform: translateY(0); }
-  to { transform: translateY(100vh); }
-}
+@keyframes fall{from{transform:translateY(0)}to{transform:translateY(100vh)}}
 
 /* NAV */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 15px;
-  background: rgba(10,0,30,0.7);
-  backdrop-filter: blur(10px);
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  padding:15px;
+  background:rgba(10,0,30,0.7);
+  backdrop-filter:blur(12px);
 }
 
-nav a {
-  color: #caa6ff;
-  text-decoration: none;
+nav a{
+  color:#caa6ff;
+  text-decoration:none;
+  font-weight:500;
 }
 
 /* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  color: var(--main);
-  text-shadow: 0 0 20px var(--glow);
+.hero h1{
+  font-size:3.2rem;
+  color:var(--main);
+  text-shadow:0 0 25px var(--glow);
+  transition:0.3s;
 }
 
-.profile {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-top: 20px;
-  border: 3px solid var(--main);
-  box-shadow: 0 0 25px var(--glow);
-  object-fit: cover;
+.hero h1:hover{
+  transform:scale(1.05);
 }
 
-.btn {
-  margin-top: 15px;
-  padding: 10px 18px;
-  border: none;
-  background: var(--main);
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
+.sub{
+  color:#bbb;
+  margin-top:5px;
+  font-size:1rem;
+}
+
+.profile{
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  margin-top:20px;
+  border:3px solid var(--main);
+  box-shadow:0 0 30px var(--glow);
+  object-fit:cover;
+  transition:0.4s;
+}
+
+.profile:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 50px var(--glow);
+}
+
+/* CV BUTTONS */
+.btns{
+  display:flex;
+  gap:15px;
+  margin-top:18px;
+}
+
+.btn{
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  background:var(--main);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+  font-weight:500;
+}
+
+.btn:hover{
+  transform:scale(1.08);
+  background:#c084fc;
 }
 
 /* SECTIONS */
-section {
-  padding: 80px 20px;
-  max-width: 900px;
-  margin: auto;
+section{
+  padding:90px 20px;
+  max-width:1000px;
+  margin:auto;
 }
 
-h2 {
-  color: var(--main);
+h2{
+  color:var(--main);
+  margin-bottom:15px;
 }
 
-.card {
-  background: rgba(255,255,255,0.05);
-  padding: 15px;
-  margin-top: 10px;
-  border-radius: 10px;
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.06);
+  padding:18px;
+  border-radius:12px;
+  margin-top:10px;
+  border:1px solid rgba(255,255,255,0.08);
 }
 
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 6px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  color: white;
+/* TOOLS GRID */
+.grid{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  padding:10px 15px;
+  background:rgba(168,85,247,0.15);
+  border:1px solid rgba(168,85,247,0.4);
+  border-radius:10px;
+}
+
+/* CONTACT */
+.contact-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.icon{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+  color:#ddd;
+}
+
+/* INPUT */
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  background:rgba(255,255,255,0.1);
+  color:white;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ⭐ STARS -->
 <div class="stars" id="stars"></div>
 
-<!-- =========================
-     🔥 EDIT YOUR DATA HERE ONLY
-========================= -->
+<!-- CONFIG -->
 <script>
-const CONFIG = {
-  name: "Ahad Matlaq",
-  title: "Software Engineer",
-  city: "Your City",
-  country: "Your Country",
-  bio: "Write your bio here",
-  email: "your@email.com",
-  phone: "000000000",
-  profileImage: "profile.jpg",
-  cvFile: "Cv ahad1.pdf"
+const CONFIG={
+  name:"Ahad Matlaq",
+  title:"Software Engineer",
+  city:"Your City",
+  country:"Your Country",
+  bio:"Write your bio here",
+  email:"your@email.com",
+  phone:"000000000",
+  profile:"profile.jpg",
+  cv:"Cv ahad1.pdf"
 };
 </script>
 
 <!-- NAV -->
 <nav>
   <a href="#about">About</a>
-  <a href="#education">Education</a>
-  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#tools">Tools</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <h1 id="name"></h1>
-  <p id="title"></p>
+  <div class="sub" id="location"></div>
+  <p style="color:#bbb" id="title"></p>
 
   <img id="profile" class="profile"/>
 
-  <button class="btn" onclick="openCV()">View CV</button>
-  <button class="btn" onclick="downloadCV()">Download CV</button>
+  <div class="btns">
+    <button class="btn" onclick="openCV()">View CV</button>
+    <button class="btn" onclick="downloadCV()">Download CV</button>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -182,34 +235,48 @@ const CONFIG = {
   <div class="card" id="bio"></div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
-  <h2>Education</h2>
-  <div class="card">Add your education here</div>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="card">Add your experience here</div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="card">HTML, CSS, JavaScript</div>
+<!-- TOOLS -->
+<section id="tools">
+  <h2>Tools</h2>
+  <div class="grid">
+    <div class="tag">HTML</div>
+    <div class="tag">CSS</div>
+    <div class="tag">JavaScript</div>
+    <div class="tag">React</div>
+    <div class="tag">Git</div>
+  </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2>Contact</h2>
-  <div class="card" id="contactInfo"></div>
+  <h2>Contact Me</h2>
 
-  <form onsubmit="sendMessage(event)">
-    <input placeholder="Name" required>
-    <input placeholder="Email" required>
-    <textarea placeholder="Message" required></textarea>
-    <button class="btn">Send</button>
-  </form>
+  <div class="contact-box">
+
+    <div>
+      <div class="icon">📧 <span id="email"></span></div>
+      <div class="icon">📞 <span id="phone"></span></div>
+
+      <form onsubmit="send(event)">
+        <input placeholder="Name" required>
+        <input placeholder="Email" required>
+        <textarea placeholder="Message" required></textarea>
+        <button class="btn">Send</button>
+      </form>
+    </div>
+
+  </div>
 </section>
 
 <script>
-// STARS
-for(let i=0;i<100;i++){
+// stars
+for(let i=0;i<120;i++){
   let s=document.createElement("div");
   s.className="star";
   s.style.left=Math.random()*100+"vw";
@@ -218,29 +285,31 @@ for(let i=0;i<100;i++){
   document.getElementById("stars").appendChild(s);
 }
 
-// LOAD DATA FROM CONFIG
-document.getElementById("name").innerText = CONFIG.name;
-document.getElementById("title").innerText = CONFIG.title;
-document.getElementById("profile").src = CONFIG.profileImage;
-document.getElementById("bio").innerText = CONFIG.bio;
+// load config
+document.getElementById("name").innerText=CONFIG.name;
+document.getElementById("title").innerText=CONFIG.title;
+document.getElementById("profile").src=CONFIG.profile;
+document.getElementById("bio").innerText=CONFIG.bio;
 
-document.getElementById("contactInfo").innerHTML =
-  "Email: " + CONFIG.email + "<br>Phone: " + CONFIG.phone;
+document.getElementById("location").innerText=
+CONFIG.city+" , "+CONFIG.country;
+
+document.getElementById("email").innerText=CONFIG.email;
+document.getElementById("phone").innerText=CONFIG.phone;
 
 // CV
 function openCV(){
-  window.open(CONFIG.cvFile);
+  window.open(CONFIG.cv);
 }
-
 function downloadCV(){
   let a=document.createElement("a");
-  a.href=CONFIG.cvFile;
-  a.download=CONFIG.cvFile;
+  a.href=CONFIG.cv;
+  a.download=CONFIG.cv;
   a.click();
 }
 
-// FORM
-function sendMessage(e){
+// form
+function send(e){
   e.preventDefault();
   alert("Message sent!");
 }
